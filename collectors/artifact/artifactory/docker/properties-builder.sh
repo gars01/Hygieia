@@ -61,10 +61,12 @@ artifactory.cron=${ARTIFACTORY_CRON:-0 0/5 * * * *}
 #  - ext
 EOF
 idx=0
-for x in ${!ARTIFACTORY_PATTERN*}
+#for x in ${!ARTIFACTORY_PATTERN*}
+for x in ${ARTIFACTORY_PATTERN}
 do
 cat >> $PROP_FILE <<EOF
-artifactory.patterns[${idx}]=${!x}
+#artifactory.patterns[${idx}]=${!x}
+artifactory.patterns[${idx}]=${x}
 EOF
 	
 	idx=$((idx+1))
@@ -76,7 +78,8 @@ cat >> $PROP_FILE <<EOF
 EOF
 
 # find how many artifactory urls are configured
-max=$(wc -w <<< "${!ARTIFACTORY_URL*}")
+#max=$(wc -w <<< "${!ARTIFACTORY_URL*}")
+max=$(echo $ARTIFACTORY_URL | wc -w)
 
 # loop over and output the url, username and apiKey
 i=0

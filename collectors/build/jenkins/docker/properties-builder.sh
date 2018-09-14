@@ -92,7 +92,8 @@ jenkins.folderDepth=${JENKINS_FOLDER_DEPTH:-10}
 EOF
 
 # find how many jenkins urls are configured
-max=$(wc -w <<< "${!JENKINS_MASTER*}")
+#max=$(wc -w <<< "${!JENKINS_MASTER*}")
+max=$(echo $JENKINS_MASTER | wc -w)
 
 # loop over and output the url, username, apiKey and niceName
 i=0

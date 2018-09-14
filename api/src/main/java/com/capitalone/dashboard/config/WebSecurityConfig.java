@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.ldap.authentication.NullLdapAuthoritiesPopulator;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -109,6 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		if (StringUtils.isNotBlank(ldapServerUrl) && StringUtils.isNotBlank(ldapUserDnPattern)) {
 			auth.ldapAuthentication()
 			.userDnPatterns(ldapUserDnPattern)
+			.ldapAuthoritiesPopulator(new NullLdapAuthoritiesPopulator())
 			.contextSource().url(ldapServerUrl);
 		}
     }
