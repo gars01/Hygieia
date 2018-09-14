@@ -15,5 +15,7 @@ VOLUME ["/hygieia/logs"]
 ENV PROP_FILE /hygieia/config/application.properties
 
 EXPOSE 8080
-CMD ./properties-builder.sh &&\
+CMD sh properties-builder.sh &&\
   java -Djava.security.egd=file:/dev/./urandom -jar *.jar --spring.config.location=$PROP_FILE
+  
+RUN sed -i -e 's/\r$//' ./properties-builder.sh

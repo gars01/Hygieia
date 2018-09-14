@@ -13,6 +13,7 @@ WORKDIR /hygieia
 
 VOLUME ["/hygieia/logs"]
 
-CMD ./properties-builder.sh && \
+CMD sh properties-builder.sh && \
   java -jar score-collector*.jar --spring.config.location=/hygieia/hygieia-score-collector.properties
 
+RUN sed -i -e 's/\r$//' ./properties-builder.sh

@@ -14,6 +14,7 @@ VOLUME ["/hygieia/logs"]
 
 ENV PROP_FILE /hygieia/config/application.properties
 
-CMD ./properties-builder.sh && \
+CMD sh properties-builder.sh && \
   java -jar udeploy-deployment-collector*.jar --spring.config.location=$PROP_FILE
 
+RUN sed -i -e 's/\r$//' ./properties-builder.sh

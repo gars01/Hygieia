@@ -15,6 +15,7 @@ VOLUME ["/hygieia/logs"]
 ENV PROP_FILE /hygieia/config/application.properties
 ENV CACERTS /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts
 
-CMD ./properties-builder.sh && \
+CMD sh properties-builder.sh && \
   java -jar bitbucket-scm-collector*.jar --spring.config.location=$PROP_FILE
 
+RUN sed -i -e 's/\r$//' ./properties-builder.sh
