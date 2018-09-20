@@ -65,7 +65,13 @@ jenkins-codequality.apiKey=${JENKINS_API_KEY}
 jenkins-codequality.saveLog=${JENKINS_SAVE_LOG:-true}
 
 #pattern to find cucubmer reports
-jenkins-codequality.artifactRegex[0]=${JENKINS_CODEQUALITY_JSON_FILENAME:-test.xml}
+#jenkins-codequality.artifactRegex[0]=${JENKINS_CODEQUALITY_JSON_FILENAME:-test.xml}
+
+jenkins-codequality.artifactRegex.junit=TEST-.*\\.xml
+jenkins-codequality.artifactRegex.findbugs=findbugsXml.xml
+jenkins-codequality.artifactRegex.pmd=pmd.xml
+jenkins-codequality.artifactRegex.checkstyle=checkstyle-result.xml
+jenkins-codequality.artifactRegex.jacoco=jacoco.xml
 
 #map the entry localhost so URLS in jenkins resolve properly
 # Docker NATs the real host localhost to 10.0.2.2 when running in docker
