@@ -73,7 +73,7 @@ jenkins-codequality.artifactRegex[0]=${JENKINS_CODEQUALITY_JSON_FILENAME:-test.x
 # this hack to fix the addresses
 jenkins-codequality.dockerLocalHostIP=${DOCKER_LOCALHOST}
 
-jenkins-codequality.jobDepth=${JENKINS_JOBDEPTH:10}
+jenkins-codequality.jobDepth=${JENKINS_JOBDEPTH:-10}
 
 EOF
 
